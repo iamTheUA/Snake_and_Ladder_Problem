@@ -10,8 +10,14 @@ public class SnakeLadder {
 		while(P1.pos<100) {
 			int DiceNum = RollDice();
 			int Option = Option();
-			P1.pos+= DiceNum*Option; 
-			
+			int move=DiceNum*Option;
+			if (move+P1.pos>100) {
+				continue;
+			}
+			P1.pos+= move; 
+			if (P1.pos<0) {
+				P1.pos=0;
+			}
 		}
 		
 	}
