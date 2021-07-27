@@ -6,6 +6,7 @@ public class SnakeLadder {
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		int turn=0;
 		Game P1 = new Game();
 		while(P1.pos<100) {
 			int DiceNum = RollDice();
@@ -18,8 +19,10 @@ public class SnakeLadder {
 			if (P1.pos<0) {
 				P1.pos=0;
 			}
+			System.out.println("Position: "+P1.pos);
+			turn+=1;
 		}
-		
+		System.out.println("Number Of Turns: "+turn);
 	}
 	
 	public static int RollDice() {
