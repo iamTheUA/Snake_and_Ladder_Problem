@@ -4,10 +4,16 @@ import java.util.Random;
 
 public class SnakeLadder {
 	
-	int DiceNum;
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
+		Game P1 = new Game();
+		while(P1.pos<100) {
+			int DiceNum = RollDice();
+			int Option = Option();
+			P1.pos+= DiceNum*Option; 
+			
+		}
+		
 	}
 	
 	public static int RollDice() {
@@ -33,8 +39,7 @@ public class SnakeLadder {
 	}
 }
 class Game{
-	Game(){
-		int Pos=0;
-		
-	}
+	int pos=0;
+	
+	
 }
