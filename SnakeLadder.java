@@ -3,39 +3,48 @@ package SnakeLadder;
 import java.util.Random;
 
 public class SnakeLadder {
-	static int PositionOf1, PositionOf2, turn = 0;
-	static int EndPoint=100;
+	static int positionOf1, positionOf2, turn = 0;
+	static int endPoint=100;
 
 	public static void main(String[] args) {
-		while (PositionOf1 < EndPoint && PositionOf2 < EndPoint) {
-			PositionOf1 = Play(PositionOf1);
-			System.out.println("Position Player1: " + PositionOf1);
-			PositionOf2 = Play(PositionOf2);
-			System.out.println("Position Player2: " + PositionOf2);
+		while (positionOf1 < endPoint && positionOf2 < endPoint) {
+			positionOf1 = play(positionOf1);
+			System.out.println("Position Player1: " + positionOf1);
+			positionOf2 = play(positionOf2);
+			System.out.println("Position Player2: " + positionOf2);
 			System.out.println("");
 			turn += 1;
 		}
 		System.out.println("Number Of Turns : " + turn);
+		
+		if(positionOf1 == positionOf2) {
+			System.out.println("Player 1 Won first!");
+		}
+		else if(positionOf1 > positionOf2) {
+			System.out.println("Player 1 Won!");
+		}
+		else
+			System.out.println("Player 2 Won!");
 	}
 
-	public static int Play(int pos) {
-		int DiceNum = RollDice();
-		int Option = Option();
-		int move = DiceNum * Option;
-		if (move + pos <= EndPoint) {
+	public static int play(int pos) {
+		int DiceNum = rollDice();
+		int option = option();
+		int move = DiceNum * option;
+		if (move + pos <= endPoint) {
 			pos += move;
 		}
 		if (pos < 0) {
 			pos = 0;
 		}
-		if (Option == 1) {
-			return Play(pos);
+		if (option == 1) {
+			return play(pos);
 		}
 
 		return pos;
 	}
 
-	public static int Option() {
+	public static int option() {
 		int op;
 		Random Random = new Random();
 		int temp = Random.nextInt(3);
@@ -49,9 +58,9 @@ public class SnakeLadder {
 		return op;
 	}
 
-	public static int RollDice() {
-		Random Random = new Random();
-		int num = Random.nextInt(6) + 1;
+	public static int rollDice() {
+		Random random = new Random();
+		int num = random.nextInt(6) + 1;
 		return num;
 	}
 
